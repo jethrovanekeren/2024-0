@@ -1,0 +1,156 @@
+\begin{thebibliography}{10}
+
+\bibitem{Akhil.CRing}
+The cring project.
+\newblock Retrieved from \url{https://math.uchicago.edu/~amathew/CRing.pdf}.
+
+\bibitem{Benson}
+David~J Benson.
+\newblock {\em Representations and cohomology: Volume 1, basic representation
+  theory of finite groups and associative algebras}, volume~1.
+\newblock Cambridge university press, 1998.
+
+\bibitem{Dimca}
+Alexandru Dimca.
+\newblock {\em Sheaves in topology}.
+\newblock 2004.
+
+\bibitem{fratila}
+Dragos Fratila.
+\newblock Perverse sheaves and the decomposition theorem.
+\newblock Retrieved from
+  {\url{https://indico.math.cnrs.fr/event/2881/attachments/1139/1256/Perverse_Sheaves_-_Dec_Thm.pdf}}.
+
+\bibitem{Fulton-Harris}
+William Fulton and Joe Harris.
+\newblock {\em Representation theory: a first course}, volume 129.
+\newblock Springer Science \& Business Media, 2013.
+
+\bibitem{Gaitsgory-05}
+Dennis Gaitsgory.
+\newblock Geometric representation theory -- fall 2005.
+\newblock Retrieved from
+  \url{https://people.mpim-bonn.mpg.de/gaitsgde/267y/catO.pdf}, 2005.
+
+\bibitem{Hartshorne}
+Robin Hartshorne.
+\newblock {\em Algebraic geometry}, volume~52.
+\newblock Springer Science \& Business Media, 2013.
+
+\bibitem{HTT}
+Ryoshi Hotta and Toshiyuki Tanisaki.
+\newblock {\em {$D$}-modules, perverse sheaves, and representation theory},
+  volume 236.
+\newblock Springer Science \& Business Media, 2007.
+
+\bibitem{humbgg}
+James Humphreys.
+\newblock {\em Representations of semisimple Lie algebras in the {BGG} category
+  {O}}.
+\newblock Number~94. American Mathematical Society, 2008.
+
+\bibitem{Humphreys.alg.grp}
+James~E Humphreys.
+\newblock {\em Linear algebraic groups}, volume~21.
+\newblock Springer Science \& Business Media, 2012.
+
+\bibitem{Huybrechts}
+Daniel Huybrechts.
+\newblock {\em {F}ourier-{M}ukai transforms in algebraic geometry}.
+\newblock Clarendon Press, 2006.
+
+\bibitem{Ince}
+Edward~L Ince.
+\newblock {\em Ordinary differential equations}.
+\newblock 1926.
+
+\bibitem{Jeffs}
+Maxim Jeffs.
+\newblock Perverse sheaves and {$\mathcal{D}$}-modules.
+\newblock Retrieved from \url{https://mjeffs.net/MinorThesis.pdf}, 2019.
+
+\bibitem{cont.bad}
+Jack Lee.
+\newblock Stackexchange: Sheafy definition for the tangent space at a point on
+  a manifold?
+\newblock Retrieved from
+  \url{https://math.stackexchange.com/questions/2616560/sheafy-definition-for-the-tangent-space-at-a-point-on-a-manifold},
+  2018.
+
+\bibitem{lurie-bwb}
+Jacob Lurie.
+\newblock A proof of the {B}orel-{W}eil-{B}ott theorem.
+
+\bibitem{Narasimhan}
+Raghavan Narasimhan.
+\newblock {\em Compact Riemann Surfaces}.
+\newblock Birkh{\"a}user, 2012.
+
+\bibitem{Smadja}
+Amiel Peiffer-Smadja.
+\newblock Internal hom for sheaves and {P}oincar\'{e}-{V}erdier duality.
+\newblock Retrieved from
+  \url{https://www.imo.universite-paris-saclay.fr/~patrick.massot/files/gdtSS/amielRHom.pdf},
+  2014.
+
+\bibitem{Riche}
+Simon Riche.
+\newblock Perverse sheaves on flag manifolds and {K}azhdan-{L}usztig
+  polynomials (after {K}azhdan-{L}usztig, {M}ac{P}herson, {S}pringer, ...).
+\newblock Retrieved from \url{https://lmbp.uca.fr/~riche/exposeKL2.pdf}, 2010.
+
+\bibitem{FAC}
+Jean-Pierre Serre.
+\newblock Faisceaux alg{\'e}briques coh{\'e}rents.
+\newblock {\em Annals of Mathematics}, pages 197--278, 1955.
+
+\bibitem{Spaltenstein}
+Nicolas Spaltenstein.
+\newblock Resolutions of unbounded complexes.
+\newblock {\em Compositio Mathematica}, 65(2):121--154, 1988.
+
+\bibitem{Springer}
+Tonny~Albert Springer.
+\newblock Linear algebraic groups.
+\newblock In {\em Algebraic Geometry IV: Linear Algebraic Groups Invariant
+  Theory}, pages 1--121. Springer, 1998.
+
+\bibitem{stacks-project}
+The {Stacks Project Authors}.
+\newblock \textit{Stacks Project}.
+\newblock \url{https://stacks.math.columbia.edu}, 2018.
+
+\bibitem{yi.sun}
+Yi~Sun.
+\newblock {$\mathcal{D}$}-modules and representation theory -- part {III} essay
+  topic 96.
+\newblock Retrieved from \url{https://yisun.io/notes/dmod.pdf}, 2011.
+
+\bibitem{Vakil}
+Ravi Vakil.
+\newblock The rising sea: Foundations of algebraic geometry.
+\newblock 2017.
+
+\bibitem{Viterbo}
+Claude Viterbo.
+\newblock Chapter 6: More on categories and sheaves.
+\newblock 2019.
+
+\bibitem{Weibel}
+Charles~A Weibel.
+\newblock {\em An introduction to homological algebra}.
+\newblock Number~38. Cambridge university press, 1994.
+
+\bibitem{Williamson-illustrated}
+Geordie Williamson.
+\newblock An illustrated guide to perverse sheaves.
+\newblock Retrieved from
+  \url{https://www.maths.usyd.edu.au/u/geordie/perverse_course/lectures.pdf},
+  2015.
+
+\bibitem{Woodward}
+Chris Woodward.
+\newblock Moment maps and geometric invariant theory.
+\newblock {\em Les cours du CIRM}, 1(1):55--98, 2010.
+
+\end{thebibliography}

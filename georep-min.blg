@@ -1,0 +1,65 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: georep-min.aux
+The style file: plain.bst
+Database file #1: refs.bib
+I was expecting a `,' or a `}'---line 187 of file refs.bib
+ :   
+ :   note={Retrieved from \url{https://math.stanford.edu/~vakil/216blog/FOAGnov1817public.pdf}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 221 of file refs.bib
+ :   retrieved 
+ :             from \texttt{https://www.math.ias.edu/~lurie/papers/bwb.pdf}
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in Akhil.CRing
+Warning--empty author in Akhil.CRing
+Warning--empty publisher in Dimca
+Warning--there's a number but no series in humbgg
+Warning--empty publisher in Ince
+Warning--empty note in lurie-bwb
+Warning--empty note in Vakil
+Warning--empty note in Viterbo
+Warning--there's a number but no series in Weibel
+You've used 28 entries,
+            2118 wiz_defined-function locations,
+            650 strings with 7327 characters,
+and the built_in function-call counts, 6148 in all, are:
+= -- 612
+> -- 202
+< -- 9
++ -- 91
+- -- 58
+* -- 290
+:= -- 1111
+add.period$ -- 85
+call.type$ -- 28
+change.case$ -- 102
+chr.to.int$ -- 0
+cite$ -- 37
+duplicate$ -- 273
+empty$ -- 519
+format.name$ -- 58
+if$ -- 1267
+int.to.chr$ -- 0
+int.to.str$ -- 28
+missing$ -- 26
+newline$ -- 141
+num.names$ -- 54
+pop$ -- 127
+preamble$ -- 1
+purify$ -- 85
+quote$ -- 0
+skip$ -- 179
+stack$ -- 0
+substring$ -- 243
+swap$ -- 37
+text.length$ -- 9
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 90
+warning$ -- 9
+while$ -- 64
+width$ -- 30
+write$ -- 283
+(There were 2 error messages)

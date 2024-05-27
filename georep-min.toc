@@ -1,0 +1,38 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{}%
+\contentsline {section}{\numberline {2}Review of finite dimensional Lie algebras}{1}{}%
+\contentsline {section}{\numberline {3}Review of modules of finite dimensional simple Lie algebras}{6}{}%
+\contentsline {section}{\numberline {4}Vermas, irreducibles and category $\mathcal {O}$}{7}{}%
+\contentsline {section}{\numberline {5}The Weyl complete reducibility theorem}{26}{}%
+\contentsline {section}{\numberline {6}Lie algebra cohomology}{31}{}%
+\contentsline {section}{\numberline {7}First interlude on sheaves: sheaves of vector spaces}{37}{}%
+\contentsline {section}{\numberline {8}Image functors of sheaves}{42}{}%
+\contentsline {section}{\numberline {9}Weyl character formula}{47}{}%
+\contentsline {section}{\numberline {10}Category $\mathcal {O}$ has enough projective}{51}{}%
+\contentsline {section}{\numberline {11}Lie groups and algebraic groups}{57}{}%
+\contentsline {section}{\numberline {12}The flag variety of $GL_n(\mathbb {C})$}{62}{}%
+\contentsline {section}{\numberline {13}Linear algebraic groups}{67}{}%
+\contentsline {section}{\numberline {14}From integral weights to line bundles on $G/B$}{76}{}%
+\contentsline {section}{\numberline {15}The Borel-Weil theorem}{77}{}%
+\contentsline {section}{\numberline {16}Finiteness of global sections: analytic proof}{82}{}%
+\contentsline {section}{\numberline {17}Second interlude on sheaves: $\mathcal {O}$-modules}{84}{}%
+\contentsline {section}{\numberline {18}Cech cohomology}{88}{}%
+\contentsline {section}{\numberline {19}Finiteness of global sections: algebraic proof}{91}{}%
+\contentsline {section}{\numberline {20}Third interlude on sheaves: $\mathcal {D}$-modules}{96}{}%
+\contentsline {section}{\numberline {21}Integrable connections and local systems}{101}{}%
+\contentsline {section}{\numberline {22}The hypergeometric functions}{104}{}%
+\contentsline {section}{\numberline {23}Singular support and holonomic $\mathcal {D}$-modules}{104}{}%
+\contentsline {section}{\numberline {24}Sheaves of $\mathcal {D}$-modules}{105}{}%
+\contentsline {section}{\numberline {25}Sato description of diagonal pushforward}{108}{}%
+\contentsline {section}{\numberline {26}Beilinson-Bernstein localisation}{108}{}%
+\contentsline {section}{\numberline {27}Roadmap from here}{117}{}%
+\contentsline {section}{\numberline {28}The Hecke algebra}{121}{}%
+\contentsline {section}{\numberline {29}The (weak) BGG resolution}{122}{}%
+\contentsline {section}{\numberline {30}The Chevalley restriction theorem}{127}{}%
+\contentsline {section}{\numberline {31}The Nilpotent cone}{129}{}%
+\contentsline {section}{\numberline {32}Pushforward with compact support}{130}{}%
+\contentsline {section}{\numberline {33}The derived category}{130}{}%
+\contentsline {section}{\numberline {34}Derived functors}{136}{}%
+\contentsline {subsection}{\numberline {34.1}Some tricky points}{136}{}%
+\contentsline {section}{\numberline {35}Perverse sheaves}{137}{}%
+\contentsline {section}{\numberline {36}Mixed Hodge modules}{138}{}%
+\contentsline {section}{\numberline {37}Symplectic structure of projective varieties}{138}{}%
