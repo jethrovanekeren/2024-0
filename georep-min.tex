@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage{amsmath, amsthm, amsfonts, amssymb}
 \usepackage{mathtools} % For dcases and \xrightarrow
+\usepackage{mathdots}% For the complicated D-module morphism figure
 \usepackage[utf8]{inputenc}
 \usepackage[all,cmtip]{xy}
 \usepackage{xcolor}
@@ -173,6 +174,10 @@
 \newcommand{\h}{\mathfrak{h}}
 \newcommand{\n}{\mathfrak{n}}
 \newcommand{\fb}{\mathfrak{b}}
+\newcommand{\gll}{\mathfrak{gl}}
+\newcommand{\sll}{\mathfrak{sl}}
+\newcommand{\soo}{\mathfrak{so}}
+\newcommand{\spp}{\mathfrak{sp}}
 
 \newcommand{\CA}{\mathcal{A}}
 \newcommand{\CC}{\mathcal{C}}
@@ -234,14 +239,6 @@ Jethro van Ekeren \\
 \tableofcontents
 
 
-THIS IS THE FINAL VERSION AS THE CLASS ENDED.
-
-THIS VERSION IS FROZEN FOR HISTORICAL PURPOSES.
-
-ANOTHER (EVOLVING) BRANCH EXISTS.
-
-
-
 
 \section{Introduction}
 
@@ -257,9 +254,9 @@ The course will cover some topics in the representation theory of semisimple Lie
 
 \section{Review of finite dimensional Lie algebras}
 
-Vector spaces are almost always over the field $\C$ of complex numbers.
+%Vector spaces are almost always over the field $\C$ of complex numbers.
 
-Let's start at the beginning.
+Let's start at the beginning. When we work with vector spaces and algebras, these are generally taken to be defined over the field $\C$ of complex numbers, unless otherwise stated.
 \begin{defn}
 A Lie algebra is a vector space $\g$ together with a bilinear operation $[,] : \g \times \g \rightarrow \g$ such that
 \[
@@ -270,13 +267,11 @@ and
 [x, [y, z]] = [[x, y], z] + [y, [x, z]].
 \]
 \end{defn}
-
-Let $A$ be an associative $\C$-algebra, for example $\en(V)$, then $A$ becomes a Lie algebra when equipped with the bracket operation
+Two basic sources of Lie algebras are as follows. Let $A$ be an associative $\C$-algebra, for example the algebra $\en(V)$ of endomorphisms of a vector space $V$, then $A$ becomes a Lie algebra when equipped with the commutator bracket operation
 \[
 [a, b] = ab - ba.
 \]
-
-Let $R$ be a commutative $\C$-algebra. A derivation of $R$ is a linear map
+For the second source, let $R$ be a commutative $\C$-algebra. A derivation of $R$ is a linear map
 \[
 D : R \rightarrow R
 \]
@@ -286,7 +281,7 @@ D(ab) = D(a)b + aD(b).
 \]
 For example $D = d/dx$ is a derivation of the algebra $R = \C[x]$.
 %In algebraic geometry commutative algebras are thought of as geometric spaces, called ``affine schemes'', and derivations correspond to vector fields.
-The set $Der(R)$ of derivations of $R$ is a vector space. The composition $D_1 \circ D_2$ of derivations is not a derivation, but the bracket is
+The set $\Der(R)$ of derivations of $R$ is a vector space. The composition $D_1 \circ D_2$ of derivations is not a derivation, but the commutator bracket is
 \[
 [D_1, D_2] = D_1 \circ D_2 - D_2 \circ D_1.
 \]
@@ -305,33 +300,31 @@ Examples of finite-dimensional simple Lie algebras:
 \begin{itemize}
 \item The special linear Lie algebra
 \[
-\mathfrak{sl}_n = \{A \in Mat_{n} \mid Tr(A) = 0 \},
+\sll_n = \{A \in \Mat_{n} \mid \tr(A) = 0 \},
 \]
 
 \item The special orthogonal Lie algebra
 \[
-\mathfrak{so}_n = \{A \in Mat_{n} \mid A + A^T = 0\},
+\soo_n = \{A \in \Mat_{n} \mid A + A^T = 0\},
 \]
 
 \item The symplectic Lie algebra
 \[
-\mathfrak{sp}_{2n} = \{A \in Mat_{2n} \mid \Omega A + A^T \Omega = 0\}, \quad \text{where} \quad \Omega = \tbt{0}{I_n}{-I_n}{0}.
+\spp_{2n} = \{A \in \Mat_{2n} \mid \Omega A + A^T \Omega = 0\}, \quad \text{where} \quad \Omega = \tbt{0}{I_n}{-I_n}{0}.
 \]
 \end{itemize}
-It turns out that these are all the finite dimensional simple Lie algebras, with $5$ exceptions.
+It turns out that all the finite dimensional simple Lie algebras over $\C$, with $5$ exceptions, and contained in these three families. The proof of this fact is the highpoint of a typical first course in Lie algebras. Along the way substantial structure theory of finite dimensional Lie algebras must be developed.
 
 %Remark on $so_{V, B}$ for a general bilinear form $B$.
 
-Cartan's criterion.
-
 \begin{defn}
-Let $(,) : \g \times \g \rightarrow \C$ be a bilinear form. We say that $(,)$ is invariant if
+Let $(\cdot, \cdot) : \g \times \g \rightarrow \C$ be a bilinear form. We say that $(\cdot, \cdot)$ is invariant if
 \[
 ([x, y], z) = (x, [y, z])
 \]
 for all $x, y, z \in \g$.
 \end{defn}
-For example if $\g = sl_n$, then
+For example if $\g = \sll_n$, then
 \[
 (X, Y) = \tr(XY)
 \]
@@ -352,19 +345,19 @@ A semisimple Lie algebra is a direct sum of simple ones
 \begin{thm}[Cartan's criterion]
 The finite dimensional Lie algebra $\g$ is semisimple if and only if its Killing form is nondegenerate.
 \end{thm}
-The Killing form turns out to be key to determining the structure of simple Lie algebras.
+The Killing form thus turns out to be key in determining the structure of simple Lie algebras.
 
-Consider the set of diagonal matrices $\h \subset \g = sl_n$, and consider the bracket
+Consider the set of diagonal matrices $\h \subset \g = \sll_n$, and consider an element $h \in \h$ and its bracket
 \[
 [h, E_{ij}] = (h_i - h_j) E_{ij}.
 \]
-This is saying that $E_{ij}$ is an eigenvector for the $\ad(h)$ as $h \in \h$. The eigenvalues are brought together into an object called a ``weight'', this is a linear function
+This is saying that $E_{ij}$ is a simultaneous eigenvector for $\ad(h)$ for all $h \in \h$. The eigenvalues are brought together into an object called a ``weight'', this is a linear function
 \[
 \alpha_{ij} : \h \rightarrow \C.
 \]
-The whole of $sl_n$ actually splits into eigenspaces for a finite number of these weights
+The whole of $\sll_n$ actually splits into eigenspaces, indexed by a finite set of such weights
 \[
-sl_n = \h \oplus \bigoplus_{i \neq j} \C E_{ij}.
+\sll_n = \h \oplus \bigoplus_{i \neq j} \C E_{ij}.
 \]
 In fact if we write $\varepsilon_i$ for extraction of the ith diagonal entry, then $\alpha_{ij} = \varepsilon_i - \varepsilon_j$.
 For example for $n=3$ we have
@@ -379,7 +372,7 @@ For example for $n=3$ we have
 % \includegraphics[width=80mm]{roots_unsymmetric.png}
 % \end{center}
 
-We restrict the Killing form to $(,) : \h \times \h \rightarrow \C$, and use it to define
+We restrict the Killing form to $(\cdot, \cdot) : \h \times \h \rightarrow \C$, and use it to define
 \[
 \nu : \h \rightarrow \h^*, \quad \text{and} \quad (\alpha, \beta) = (\nu^{-1}(\alpha), \nu^{-1}(\beta)).
 \]
@@ -448,7 +441,7 @@ a_{ij} = 2 \frac{(\alpha_i, \alpha_j)}{(\alpha_i, \alpha_i)} = -q \leq 0
 \]
 represents how many times one may add $\alpha_i$ to $\alpha_j$ before leaving $\Delta$. The $\ell \times \ell$-matrix $(a_{ij})$ is called the Cartan matrix of $\g$.
 
-Analysing the Lie algebra $sl_3$ in this way:
+Analysing the Lie algebra $\sll_3$ in this way:
 \begin{center}
 \includegraphics[width=100mm]{A2_Serre.png}
 \end{center}
@@ -477,7 +470,7 @@ we see (note the importance of getting the order of the roots right) that its Ca
 \begin{defn}
 The Weyl group of $\g(A)$ is the subgroup
 \[
-W \subset O(\h^*, (,))
+W \subset O(\h^*, (\cdot, \cdot))
 \]
 generated by the root reflections $r_\al$.
 \end{defn}
@@ -555,12 +548,12 @@ PROBLEM 2: For $\g$ simple, classify and describe the irreducible finite dimensi
 
 Now this is possible.
 
-Briefly recall the answer for $sl_2$. Fix the basis $\{E, H, F\}$ of $sl_2$ as above, the relations are
+Briefly recall the answer for $\sll_2$. Fix the basis $\{E, H, F\}$ of $\sll_2$ as above, the relations are
 \[
 [H, E] = 2E, \quad [H, F] = -2F, \quad [E, F] = H.
 \]
 \begin{thm}
-For each nonnegative integer $n \in \Z_+$, there is a unique irreducible module of $sl_2$ of dimension $n+1$, denoted $V_n$. It looks as follows
+For each nonnegative integer $n \in \Z_+$, there is a unique irreducible module of $\sll_2$ of dimension $n+1$, denoted $V_n$. It looks as follows
 \begin{center}
 \includegraphics[width=100mm]{sl2_chain_corrected.png}
 \end{center}
@@ -729,7 +722,7 @@ Example: For the finite dimensional module
 \[
 L(3\varpi) = M(3\varpi) / J
 \]
-of $sl_2$, we have write $x = e^\varpi$
+of $\sll_2$, we have write $x = e^\varpi$
 \[
 \ch_{M(3\varpi)} = x^3(1 + x^{-2} + x^{-4} + \cdots) = \frac{x^3}{1-x^{-2}}, \qquad \ch_{L(3\varpi)} = x^3 + x + x^{-1} + x^{-3}.
 \]
@@ -790,7 +783,7 @@ Recall the simple roots
 \[
 \Pi = \{\al_1, \ldots, \al_\ell\},
 \]
-and for each one the $sl_2$-triple
+and for each one the $\sll_2$-triple
 \[
 E_i, \quad F_i, \quad \al_i^\vee = \frac{2}{(\al_i, \al_i)} \nu^{-1}(\al_i).
 \]
@@ -844,7 +837,7 @@ If $\lambda \in P_+$ then $L(\La)$ is finite dimensional.
 
 There should be some relation between the bases of simple roots and of fundamental weights.
 \begin{exer}
-Let $\g$ be a finite dimensional simple Lie algebra, so that we know the nondegenerate invariant form $(,)$ is unique up to rescaling.
+Let $\g$ be a finite dimensional simple Lie algebra, so that we know the nondegenerate invariant form $(\cdot, \cdot)$ is unique up to rescaling.
 \begin{itemize}
 \item Show that the coroots $\al_i^\vee$ are well-defined independent of the choice of $(,)$.
 
@@ -893,7 +886,7 @@ Notice that each of these vector space summands is actually a $\g$-module. So in
 
 
 
-Let us compute the Casimir in some modules of $sl_2$. We take the symmetric bilinear form
+Let us compute the Casimir in some modules of $\sll_2$. We take the symmetric bilinear form
 \[
 (E, F) = 1, \quad (H, H) = 2,
 \]
@@ -973,7 +966,7 @@ Another convenient way to phrase the relation above is
 Exercise.
 \end{proof}
 
-Example of $M = M(2\varpi)$ for $sl_2$. There are two singular vectors: the highest weight vector in weight $\la = 2\varpi$, and another one in weight $\mu = -4\varpi$.
+Example of $M = M(2\varpi)$ for $\sll_2$. There are two singular vectors: the highest weight vector in weight $\la = 2\varpi$, and another one in weight $\mu = -4\varpi$.
 \begin{center}
 \includegraphics[width=130mm]{M2-M-4-inclusion.png}
 \end{center}
@@ -1042,7 +1035,7 @@ Knowing now that $\La' = \La$, we see that $w=v$ up to a scalar, and therefore $
 % Exercise: Show that all projective covers of an object $M$ (if any exist) are isomorphic to each other.
 
 
-%Consider $\g = sl_2$. In a typical block of $\OO$ there are exactly $5$ indecomposable modules.
+%Consider $\g = \sll_2$. In a typical block of $\OO$ there are exactly $5$ indecomposable modules.
 
 
 
@@ -1059,7 +1052,7 @@ It is possible to ``correct'' the definition of the dual. Let
 \[
 \tau : \g \rightarrow \g
 \]
-be an anti-automorphism of order $2$, satisfying $\tau(h) = h$ for all $h \in \h$ and $\tau(\g_\al) = \g_{-\al}$ for all roots $\al$. For $sl_n$ for example, taking $\tau(X) = X^T$ would work. It is possible to construct such $\tau$ in general.
+be an anti-automorphism of order $2$, satisfying $\tau(h) = h$ for all $h \in \h$ and $\tau(\g_\al) = \g_{-\al}$ for all roots $\al$. For $\sll_n$ for example, taking $\tau(X) = X^T$ would work. It is possible to construct such $\tau$ in general.
 \begin{defn}
 Let $M = \bigoplus_{\la \in \h^*} M_\la$ be a $\g$-module in category $\OO$. The \emph{contragredient} module $M^\vee$ is by definition $M^\vee = \bigoplus_{\la \in \h^*} M_\la^*$ with the action of $\g$ defined by
 \[
@@ -1082,7 +1075,7 @@ If $M \in \OO$ then also $M^\vee \in \OO$.
 
 {\color{red}Is $\tau$ unique??}
 
-Let's do a couple of examples of contragredient modules for $\g = sl_2$. Here are the Verma modules $M(2\varpi)$ and $M(-4\varpi)$ (there clearly exists an embedding $M(-4\varpi) \subset M(2\varpi)$).
+Let's do a couple of examples of contragredient modules for $\g = \sll_2$. Here are the Verma modules $M(2\varpi)$ and $M(-4\varpi)$ (there clearly exists an embedding $M(-4\varpi) \subset M(2\varpi)$).
 
 \begin{center}
 \includegraphics[width=100mm]{M-2.png}
@@ -2003,9 +1996,43 @@ B_\varepsilon(a) = \{x \in \C \mid |x-a| < \varepsilon\}
 for $a \in \C^\times$ and $0 < \varepsilon < |a|$.
 
 We obtain a sheaf which is isomorphic to the constant sheaf $\underline{\C}_U$ when restricted to any of these balls, but which has no nonzero sections over $X$ and so is definitely not isomorphic to $\underline{\C}_X$.
+% \begin{center}
+% \includegraphics[width=100mm]{nontriv-loc-sys.png}
+% \end{center}
+
+\begin{figure}[htp]
 \begin{center}
-\includegraphics[width=100mm]{nontriv-loc-sys.png}
+\begin{tikzpicture}[scale=1.5]
+% Axes
+\draw[->] (-2.5, 0) -- (2.5, 0) node[below right] {Re};
+\draw[->] (0, -2.5) -- (0, 2.5) node[below right] {Im};
+
+% Circles and points
+\draw[dashed] (1, 0) circle (1/2);
+\draw[dashed] (0.5, 0.866) circle (3/4);
+\draw[dashed] (-0.5, 0.866) circle (1/2);
+\draw[dashed] (-1, 0) circle (5/6);
+\draw[dashed] (-0.5, -0.866) circle (3/5);
+\draw[dashed] (0.5, -0.866) circle (2/3);
+%\draw[dashed] (1.5, 0.866) circle (1);
+
+% Dots at intersections
+\draw (1.5, 0) node[above right] {$U_1$};
+\draw (0.5, 0.866) node[above right] {$U_2$};
+\draw (-0.5, 1.266) node[above left] {$U_3$};
+\draw (-1, 0) node[above left] {$U_4$};
+\draw (-0.5, -1.366) node[below left] {$U_5$};
+\draw (1.2, -0.866) node[below right] {$U_6$};
+%\draw (1.5, 0.866) node[above right] {$U_7$};
+% Labels
+% \node at (2.2, 1) {$F(U_i) \cong \mathbb{C}$};
+% \node at (2.2, 0.5) {$F(\bigcup_i U_i) = \{0\}$};
+\end{tikzpicture}
 \end{center}
+\caption{For each $i$ we have $\CF|_{U_i} = \underline{\C}_{U_i}$, while $\CF(\bigcup_i U_i) = \{0\}$}
+\label{fig:1}
+\end{figure}
+
 
 
 {\color{red}GOT TO HERE ON 2024-01-18}
@@ -2250,7 +2277,7 @@ We have assumed that $\La \in P_+$. We now show that this implies $\ch_{L(\La)}$
 \begin{defn}
 Let $\g$ be semisimple. A weight module for $\g$ is said to be \emph{integrable} if $E_{\al}$ acts locally nilpotently in $M$ for all $\al \in \D$.
 \end{defn}
-Let $M$ be integrable and let $\mu \in \supp(M)$. For some simple root $\al$, consider the $sl_2$-subalgebra $\ma = <E_\al, \al^\vee, E_{-\al}>$ and its representation in $L = \bigoplus_{n \in \Z} M_{\la + n \al}$. Because of integrability, each vector in $L$ lies in a finite dimensional $\ma$-submodule. By an argument similar to the one we did for $\g$ itself, we may deduce that each weight space of $L$ is finite dimensional and
+Let $M$ be integrable and let $\mu \in \supp(M)$. For some simple root $\al$, consider the $\sll_2$-subalgebra $\ma = <E_\al, \al^\vee, E_{-\al}>$ and its representation in $L = \bigoplus_{n \in \Z} M_{\la + n \al}$. Because of integrability, each vector in $L$ lies in a finite dimensional $\ma$-submodule. By an argument similar to the one we did for $\g$ itself, we may deduce that each weight space of $L$ is finite dimensional and
 \[
 \dim(M_\la) = \dim(M_{r_i(\la)}).
 \]
@@ -2396,9 +2423,9 @@ Exercise: Write out a proof.
 \section{Category $\OO$ has enough projective}
 
 
-Let us finally prove the following classification of indecomposable objects in a block of category $\OO$ for $sl_2$.
+Let us finally prove the following classification of indecomposable objects in a block of category $\OO$ for $\sll_2$.
 \begin{prop}
-Let $\g = sl_2$. There are exactly $5$ indecomposable objects in the block $\OO_0$, and they are the following:
+Let $\g = \sll_2$. There are exactly $5$ indecomposable objects in the block $\OO_0$, and they are the following:
 \begin{itemize}
 \item The Verma $M = M(0)$ and its irreducible quotient $L = L(0)$,
 
@@ -2599,7 +2626,7 @@ Another curious element of $W$ is the so-called \emph{Coxeter element}. This is 
 \[
 h
 \]
-called the \emph{Coxeter number} of $\g$. For example $h(sl_n) = n$ and $h(E_8) = 30$.
+called the \emph{Coxeter number} of $\g$. For example $h(\sll_n) = n$ and $h(E_8) = 30$.
 
 
 Another important number associated with $\g$ is the \emph{dual Coxeter number} $h^\vee$, which is defined as follows: let $\theta \in \D_+$ be the highest root (the unique root such that no root is higher than it) and let $\kappa$ denote the Killing form of $\g$ (which we restrict to $\h$, use to identify $\h \rightarrow \h^*$, and finally transfer to a bilinear form $\kappa$ on $\h^*$), then
@@ -2618,7 +2645,7 @@ h = \frac{\dim(\g)}{rank(\g)}
 \]
 and
 \[
-|\rho|^2 = \frac{h^\vee \dim(\g)}{24}.
+|\rho|^2 = \frac{h^\vee \dim(\g)}{12}.
 \]
 
 
@@ -3645,7 +3672,7 @@ Intuitively we would like to ``exponentiate'' such a representation to get a rep
 \[
 e^{H} v_\la = e^{\la(H)} v_\la.
 \]
-This will not work for an arbitrary $\la$, indeed consider $SL_3$ and $sl_3$: the matrices
+This will not work for an arbitrary $\la$, indeed consider $SL_3$ and $\sll_3$: the matrices
 \begin{align*}
 H_1 = \left(
 \begin{array}{ccc}
@@ -3684,7 +3711,7 @@ h v_\la = s^m t^n v_\la.
 
 So let $\La$ be such an integral weight. We extend $M = \C v_\La$ module over the Borel subgroup $B \subset G$ by letting $u \in U$ act as the identity. This is the exponentiated version of the one-dimensional $\frakb$-module defined by $x v = \Lambda(x) v$ for $x \in \h$ and $xv = 0$ for $x \in \n_+$. In fact for the construction below we could take any $B$-module $M$.
 
-% Here are two examples: $sl_2$ and $sl_3$.
+% Here are two examples: $\sll_2$ and $\sll_3$.
 % \begin{center}
 % \includegraphics[width=70mm]{sl2-grp-wt.png}
 % \end{center}
@@ -3820,7 +3847,7 @@ u & -1 \\
 \right), v_\la) \equiv \frac{d}{du}.
 \]
 
-Now let's think about the action of $\g = sl_2$ via vector fields on $\bbP^1$ more generally. Write $X = G/B \cong \bbP^1$ for the flag variety (or any variety at this point), and consider a smooth function $f : X \rightarrow \C$. We have an action of $g \in G$ by
+Now let's think about the action of $\g = \sll_2$ via vector fields on $\bbP^1$ more generally. Write $X = G/B \cong \bbP^1$ for the flag variety (or any variety at this point), and consider a smooth function $f : X \rightarrow \C$. We have an action of $g \in G$ by
 \[
 [g f](x) = f(g^{-1}x),
 \]
@@ -5312,7 +5339,7 @@ Let $V$ be a left $U(\g)$-module now. We define a sheaf $\CV$ of $\CD_X$-modules
 \]
 This is called \emph{Beilinson-Bernstein localisation}. We shall often denote the $\CD$-module associated with $V$ as $\D(V)$.
 
-Let's consider $\g = sl_2$ and the case of the trivial $\g$-module $V = \C$. We observe that $V = U(\g) / U(\g)\g$, so that (in $X_\sigma$ at least)
+Let's consider $\g = \sll_2$ and the case of the trivial $\g$-module $V = \C$. We observe that $V = U(\g) / U(\g)\g$, so that (in $X_\sigma$ at least)
 \[
 \CD_X \otimes_{U(\g)} V = \CD_X \otimes_{U(\g)} U(\g) / U(\g) \g = \CD / \CD \partial_u.
 \]
@@ -5344,7 +5371,7 @@ For most $\g$-modules $M$ we have $\D(M) = 0$ in fact. This becomes clear upon c
 \[
 \Om = EF + FE + \frac{1}{2}H^2
 \]
-for $\g = sl_2$. The image $\Om'$ of this in $\CD_X(U)$, where $U = X_\sigma$ is the big cell, is (using \eqref{eq:untwisted.DO})
+for $\g = \sll_2$. The image $\Om'$ of this in $\CD_X(U)$, where $U = X_\sigma$ is the big cell, is (using \eqref{eq:untwisted.DO})
 \[
 \Om' = -\frac{\partial}{\partial u} u^2 \frac{\partial}{\partial u} - u^2 \frac{\partial}{\partial u} \frac{\partial}{\partial u} + 2 u \frac{\partial}{\partial u} u \frac{\partial}{\partial u} = 0.
 \]
@@ -5592,9 +5619,75 @@ So $\int_{j!} \OO_U \rightarrow \int_j \OO_U$ is (1) on $U$ it is the identity m
 \]
 The picture is as follows
 
+
+
+
+\begin{figure}[htp]
 \begin{center}
-\includegraphics[width=100mm]{intext_1.jpg}
+\begin{tikzpicture}[scale=1.5]
+% Left part:
+% dots
+\node (1) at (-4, 0) {$\bullet$};
+\node (x) at (-3, 1) {$\bullet$};
+\node (x2) at (-2, 2) {$\bullet$};
+\node (y) at (-3, -1) {$\bullet$};
+\node (y2) at (-2, -2) {$\bullet$};
+% labels
+\node at (-4.3, 0) {1};
+\node at (-3.3, 1.3) {$\partial$};
+\node at (-2.3, 2.3) {$\partial^2$};
+\node at (-3.3, -1.3) {$x$};
+\node at (-2.3, -2.3) {$x^2$};
+% arrows
+\draw[->] (1) to[bend left] node[midway, left] {$\partial$} (x);
+\draw[->, dotted] (x) to[bend left] node[midway, right] {$x$} (1);
+\draw[->] (x) to[bend left] node[midway, left] {$\partial$} (x2);
+\draw[->] (x2) to[bend left] node[midway, right] {$x$} (x);
+\draw[->] (1) to[bend left] node[midway, right] {$x$} (y);
+\draw[->] (y) to[bend left] node[midway, left] {$\partial$} (1);
+\draw[->] (y) to[bend left] node[midway, right] {$x$} (y2);
+\draw[->] (y2) to[bend left] node[midway, left] {$\partial$} (y);
+%
+\node[above right] at (-1.8, 2.2) {$\iddots$};
+\node[above right] at (-1.8, -2.7) {$\ddots$};
+%
+% Right part:
+% dots
+\node (1') at (0, 0) {$\bullet$};
+\node (x') at (1, 1) {$\bullet$};
+\node (x2') at (2, 2) {$\bullet$};
+\node (y') at (1, -1) {$\bullet$};
+\node (y2') at (2, -2) {$\bullet$};
+% labels
+\node at (-0.3, 0) {1};
+\node at (0.7, 1.3) {$\partial$};
+\node at (1.7, 2.3) {$\partial^2$};
+\node at (0.7, -1.3) {$x$};
+\node at (1.7, -2.3) {$x^2$};
+% arrows
+\draw[->] (1') to[bend left] node[midway, left] {$\partial$} (x');
+\draw[->] (x') to[bend left] node[midway, right] {$x$} (1');
+\draw[->] (x') to[bend left] node[midway, left] {$\partial$} (x2');
+\draw[->] (x2') to[bend left] node[midway, right] {$x$} (x');
+\draw[->] (1') to[bend left] node[midway, right] {$x$} (y');
+\draw[->, dotted] (y') to[bend left] node[midway, left] {$\partial$} (1');
+\draw[->] (y') to[bend left] node[midway, right] {$x$} (y2');
+\draw[->] (y2') to[bend left] node[midway, left] {$\partial$} (y');
+%
+\node[above right] at (2.2, 2.2) {$\iddots$};
+\node[above right] at (2.2, -2.7) {$\ddots$};
+%
+% Central arrow
+\draw[->] (1) to[out=0, in=180] node[midway, below] {$\varphi$} (y');
+\end{tikzpicture}
 \end{center}
+\caption{The morphism $\varphi : \CD / \CD x \partial \rightarrow \CD / \CD \partial x$}
+\label{fig:2}
+\end{figure}
+%
+% \begin{center}
+% \includegraphics[width=100mm]{intext_1.jpg}
+% \end{center}
 
 Inside $\CD / \CD \cdot x \partial_x$ we have the submodule generated by $\partial_x$, the quotient by this submodule is generated by $1$. There is a well-defined morphism of $\CD$-modules killing the submodule and sending $1 \mapsto x$. The image is isomorphic to $\C[x]$ with $x^{k+1}$ playing the role of $x^k$. This might seem peculiar, but consider $\partial_x x =0$ in this module, so indeed $x$ is behaving like $1$.
 
