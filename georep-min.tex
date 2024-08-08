@@ -19,6 +19,7 @@
 %\usepackage{cancel}
 
 \usepackage{tikz}
+\usepackage{tikz-cd}
 %\usepackage{bbm}
 
 
@@ -4366,7 +4367,7 @@ S^{-1} \Om_{R / A} \cong \Om_{S^{-1}R / A}
 whenever $R$ is an $A$-algebra and $S \subset R$ is a multiplicative set. See {\cite[p. 328]{Akhil.CRing}} (FIND A MORE CLASSIC REFERENCE)
 
 
-\section{Cech cohomology}
+\section{Cech cohomology}\label{sec:cech}
 
 
 Discussion of Cech complex: Hartshorne III.4.
@@ -4410,11 +4411,7 @@ and then hit the resolution, term-by-term with our functor, in this case $\Gamma
 which we then take the cohomology. Cech cohomology is the best thing ever. It's what allows you to turn sheaves on a space into concrete invariants like Betti numbers, etc. Of course, not every open cover gives you the right answer (indeed $\{X\}$ is an open cover of $X$, and this would usually not be expected to work). In general one imagines that some cover by ``sufficiently small'' open sets will give the right answer. This is quantified by the definition of a cover being ``acyclic for $\CF$''. In the case of a smooth manifold, opens homeomorphic to balls in $\R^n$ usually suffice, for quasicoherent sheaves in algebraic geometry, a cover for which all opens and their intersections are open affines in $X$ is sufficient {\cite[Lemma 30.2.6]{stacks-project}}.
 
 
-Now let's do some examples.
-
-{\color{blue}ELLIPTIC CURVES AND ELLIPTIC FUNCTIONS}
-
-For example let's compute the Cech cohomology of $\OO_E$ using the cover $U_1 = E \backslash p_1$ and $U_2 = E \backslash p_2$. The Cech complex has only two terms
+Now let's do some examples. Let $E = \C / \Z + \Z \tau$ be a smooth elliptic curve. Let's compute the Cech cohomology of $\OO_E$ using the cover $U_1 = E \backslash p_1$ and $U_2 = E \backslash p_2$. The Cech complex has only two terms
 \[
 C^0 \rightarrow C^1
 \]
@@ -4426,7 +4423,36 @@ and
 \[
 C^1 = j^{1, 2}_* {\OO_E}|_{U_1 \cap U_2}.
 \]
-We hit the complex with the global sections functor: By a bit of elliptic function theory we know that a section of $j^1_* {\OO_E}|_{U_1}$ is a linear combination of $\wp(z-p_1)$ and all derivatives, similarly $\wp(z-p_2)$ etc., for the other factor. As for global sections of $C^1$ we have linear combinations of all the functions just mentioned, as well as one more: $\zeta(z-p_1) - \zeta(z-p_2)$. Now in
+
+We can describe $H^0(U_1, \OO_E)$ in terms of elliptic functions. Write $\La = \Z + \Z \tau$, and recall the Weierstrass function
+\[
+\wp(z) = \frac{1}{z^2} + \sum_{\la \in \La \backslash \{0\}} \left( \frac{1}{(z-\la)^2} - \frac{1}{\la^2} \right),
+\]
+which satisfies
+\[
+\wp(z+1)=\wp(z), \qquad \wp(z+\tau)=\wp(z),
+\]
+i.e., is an elliptic function. It turns out there is no elliptic function with a simple pole at $z=0$, so $\wp(z)$ together with all its derivatives (and the constant function) must form a basis of $H^0(E \backslash \{0\}, \OO_E)$. Hence $H^0(U_1, \OO_E)$ is spanned by $1$, $\wp(z-p_1)$ and all its derivatives.
+
+The space $H^0(U_1 \cap U_2, \OO_E)$ contains the restrictions of all the functions on $U_1$ and $U_2$ already seen, and essentially one more. Consider
+\[
+\zeta(z) = \frac{1}{z} + \sum_{\la \in \La \backslash \{0\}} \left( \frac{1}{z-\la} + \frac{1}{\la} + \frac{z}{\la^2} \right),
+\]
+which is well-defined and meromorphic on $\C$, but satisfies
+\[
+\zeta(z+1)=\zeta(z)+\alpha, \qquad \zeta(z+\tau)=\zeta(z)+\beta,
+\]
+for some constants $\al$ and $\beta$. Thus $\zeta(z)$ is not elliptic but
+\[
+\zeta_{p_1, p_2}(z) = \zeta(z-p_1)-\zeta(z-p_2) \in H^0(U_1 \cap U_2, \OO_E)
+\]
+is. By the residue theorem, any elliptic function with poles at $p_1$ and $p_2$ is a linear combination of $\zeta_{p_1, p_2}$, the constant function $1$, and derivatives of $\wp(z-p_1)$ and $\wp(z-p_2)$. The Cech complex is
+\[
+H^0(U_1, \OO_E) \oplus H^0(U_2, \OO_E) \rightarrow H^0(U_1 \cap U_2, \OO_E)
+\]
+where $(f, g) \mapsto f|_{U_1 \cap U_2} + g|_{U_1 \cap U_2}$. Clearly the kernel is $\C(1, -1)$ and the cokernel is $\C \zeta_{p_1, p_2}$. Thus we have proved $H^0(\OO_X) \cong H^1(\OO_X) \cong \C$.
+
+Now in
 \[
 \Gamma(E, C^0) \rightarrow \Gamma(E, C^1)
 \]
@@ -5199,42 +5225,49 @@ This includes the case of the $\delta(x)$-function, as the case $i : * \rightarr
 
 {\color{blue}Another very important case is that in which $X$ is smooth projective and $p : X \rightarrow *$. Then the $\CD$-module pushforward along $p$ is essentially de Rham cohomology. More precisely $\int_p \omega_X$ is an object in the derived category of $\CD_*$-modules (which is to say $\C$-modules), whose cohomology it turns out is the singular cohomology $H^*(X)$ of $X$.
 
-Indeed $p^{-1}(\CD_*) = \underline{\C}_X$ the constant sheaf on $X$, and $D_{X \rightarrow *} = \OO_X \otimes_{\underline{\C}_X} \underline{\C}_X = \OO_X$. (I'D LIKE TO FIND AN EXPLICIT REFERENCE FOR THIS CALCULATION.)
+Indeed $p^{-1}(\CD_*) = \underline{\C}_X$ the constant sheaf on $X$, and $D_{X \rightarrow *} = \OO_X \otimes_{\underline{\C}_X} \underline{\C}_X = \OO_X$.
 
-As we see in {\cite[?????]{HTT}} the association
+If we consider a right $\CD_X$-module $\CF$ then we refer to $\CF \otimes^L_{D_X} \OO_{X}$ as the de Rham complex of $\CF$, and the association
 \[
 \CF \mapsto \CF \otimes^L_{D_X} \OO_{X}
 \]
-has a name, it is the de Rham functor (closely related to the solution functor).
+as the de Rham functor. (In {\cite[Section 4.2]{HTT}} the de Rham functor is defined for left $\CD_X$-modules, and looks a little different there, only for this reason. Closely related to the de Rham functor is the so called ``solution functor'' also).
 
-Anyway, spell out the story of how doing derived $(-) \otimes_{D} \OO$, followed by derived global sections, yields singular cohomology and in the process the Hodge diamond.
+Anyway, taking the derived version of $(-) \otimes_{\CD_X} \OO_X$, followed by derived global sections, yields singular cohomology and in the process the Hodge diamond.
 
-
-Let us do the example of the smooth elliptic curve $E = \C / \Z + \Z \tau$, which is particularly easy to work out concretely since $\omega_E$ has a nonvanishing global section $dz$ and hence $\omega_E \cong \OO_E$. We have a resolution of $\OO_E$ by left $\CD_E$-modules which is basically $\CD \rightarrow \CD$ with $f(z) \partial_z^k \mapsto f(z) \partial_z^{k+1}$.
-
-We tensor over $\CD$ with the right $\CD$-module $\omega$, obtaining
+Let us do the example of the smooth elliptic curve $E = \C / \Z + \Z \tau$, which is particularly easy to work out concretely since $\omega_E$ has a nonvanishing global section $dz$ and hence $\omega_E \cong \OO_E$. We have a resolution of $\OO_E$ by left $\CD_E$-modules which is basically $\CD \rightarrow \CD$ with $f(z) \partial_z^k \mapsto f(z) \partial_z^{k+1}$. We tensor over $\CD$ with the right $\CD$-module $\omega$, obtaining
 \[
 \omega \otimes_{\CD} \CD \rightarrow \omega \otimes_{\CD} \CD.
 \]
-Now this is just
+This is equivalent to
 \[
-\omega \rightarrow \omega,
+\OO_E \rightarrow \OO_E, \qquad f(z) \mapsto f'(z).
 \]
-with the map being
-\[
-dz f(z) \mapsto -dz f'(z).
-\]
-Now we may take a Cech resolution of both terms, and we obtain a spectral sequence whose first page looks as follows
+Now we may take a Cech resolution of both terms, and we obtain a spectral sequence. Recall that we have computed the sheaf cohomology of $\OO_E$ via a Cech resolution already in Section \ref{sec:cech}. So we will re-use this computation.
 
-PICTURE
-
-The horizontal maps are just derivatives. The representative $1$ of $H^0$ gets killed by the derivative, and we get constributions to bidegree $(0, 0)$ and $(1, 0)$. Similarly the representative $\zeta$ of $H^1$, upon application of derivative becomes a combination of $\wp$, which are zero in Cech cohomology. So $\zeta$ contributes to bidegrees $(0, 1)$ and $(1, 1)$. In total, therefore, we recover $H^*(\int_p \omega_E) = (\C, \C^2, \C)$, which are the Betti numbers of $E$.
-
-
-
+We obtain a spectral sequence for $\int_p \omega_E$ whose first page looks as follows.
+\begin{figure}[htp]
 \begin{center}
-\includegraphics[width=100mm]{elliptic-cech.png}
+\begin{tikzcd}
+{\C \zeta_{p_1, p_2}} \arrow[r] & {\C \zeta_{p_1, p_2}} &  & h \arrow[r, maps to]        & h'         \\
+{\C(1, 1)} \arrow[r]           & {\C(1, 1)}           &  & {(f, g)} \arrow[r, maps to] & {(f', g')}
+\end{tikzcd}
 \end{center}
+\end{figure}
+The bottom arrow vanishes because the derivative of a constant vanishes. The top arrow vanishes because $\zeta'(z) = -\wp(z)$, so the derivative of $\zeta_{p_1, p_2}$ goes to zero in the Cech cohomology group $H^1(\OO_X)$.
+
+The second (and infinite) page of the spectral sequence is
+\begin{figure}[htp]
+\begin{center}
+\begin{tikzcd}
+\C & \C \\
+\C & \C
+\end{tikzcd}
+\end{center}
+\end{figure}
+In total, therefore, we recover $H^*(\int_p \omega_E) = (\C, \C^2, \C)$, which are the Betti numbers of $E$.
+
+
 
 
 
