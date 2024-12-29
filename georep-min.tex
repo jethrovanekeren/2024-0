@@ -1113,11 +1113,11 @@ Let $\CC$ be a $\C$-linear abelian category (I just mean every space $\Hom(X, Y)
 \[
 \Hom(X, -) : \CC \rightarrow \Vect.
 \]
-It is clear that this is a functor, as a morphism $f : A \rightarrow B$ induces a morphism $\Hom(X, A) \rightarrow \Hom(X, B)$ by composition $\phi \mapsto f \circ \phi$. Suppose $A \rightarrow B$ then it is basically clear that
+It is clear that this is a functor, as a morphism $f : A \rightarrow B$ induces a morphism $\Hom(X, A) \rightarrow \Hom(X, B)$ by composition $\phi \mapsto f \circ \phi$. Suppose $f : A \rightarrow B$ is an injection, then it is basically clear that
 \[
-\Hom(X, A) \subset \Hom(X, B),
+\Hom(X, A) \rightarrow \Hom(X, B)
 \]
-as two different morphisms to $A$ continue to be different after putting $A$ inside $B$. In other words $\Hom(X, -)$ sends injections to injections.
+is also an injection, since any two different morphisms $X \rightarrow A$ should continue to be different after putting $A$ inside $B$. In other words $\Hom(X, -)$ sends injections to injections.
 
 The same is not true for surjections! Indeed
 \begin{defn}
